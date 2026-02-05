@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usluge | Dr Sveta Marković - Stomatološka ordinacija Mirijevo</title>
+  <meta name="description" content="Oralna hirurgija, implanti, vađenje umnjaka, popravke zuba, protetika. Dr Mitar Marković, specijalista oralne hirurgije u Mirijevu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #1a5276; --primary-light: #2471a3; --accent: #148f77; --accent-light: #1abc9c;
+      --dark: #1c2833; --text: #2c3e50; --text-light: #5d6d7e;
+      --bg: #ffffff; --bg-soft: #f8f9fa; --border: #e8ecef;
+      --radius: 16px; --shadow: 0 4px 24px rgba(0,0,0,0.06); --shadow-lg: 0 12px 48px rgba(0,0,0,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--primary); line-height: 1.3; }
+    .logo small { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 400; color: var(--text-light); letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a { font-size: 0.92rem; font-weight: 500; color: var(--text); transition: color 0.2s; }
+    .nav a:hover { color: var(--primary); }
+    .nav a.active { color: var(--primary); }
+    .nav-cta { background: var(--primary); color: #fff !important; padding: 10px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--primary-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: center; padding-top: 48px; gap: 24px; z-index: 999; }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a { font-size: 1.1rem; font-weight: 500; color: var(--text); }
+
+    .page-hero { padding: 140px 24px 64px; background: linear-gradient(180deg, #f0f6fa 0%, #fff 100%); text-align: center; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+    .page-hero p { font-size: 1.1rem; color: var(--text-light); max-width: 560px; margin: 0 auto; }
+    .section { padding: 80px 24px; }
+    .section-soft { background: var(--bg-soft); }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .service-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .service-card img { width: 100%; height: 200px; object-fit: cover; }
+    .service-card-body { padding: 24px; }
+    .service-card-body h3 { font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .service-card-body p { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; margin-bottom: 16px; }
+    .service-tag { display: inline-block; background: rgba(26,82,118,0.08); color: var(--primary); padding: 4px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 600; }
+
+    .service-detail { padding: 80px 24px; }
+    .service-detail-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .service-detail-inner.reverse { direction: rtl; }
+    .service-detail-inner.reverse > * { direction: ltr; }
+    .service-detail-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); margin-bottom: 16px; }
+    .service-detail-text p { font-size: 1rem; color: var(--text-light); margin-bottom: 14px; line-height: 1.7; }
+    .service-detail-text .detail-list { margin: 20px 0; }
+    .detail-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .detail-check { width: 24px; height: 24px; background: rgba(20,143,119,0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; font-weight: 700; }
+    .detail-item p { font-size: 0.92rem; color: var(--text); margin: 0; }
+    .service-detail-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .service-detail-img img { width: 100%; height: 380px; object-fit: cover; }
+
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; padding: 14px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 600; transition: all 0.25s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,82,118,0.25); }
+
+    .cta-banner { padding: 64px 24px; text-align: center; background: var(--dark); color: #fff; }
+    .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 28px; font-size: 1.05rem; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--primary); padding: 14px 36px; border-radius: 50px; font-size: 0.95rem; font-weight: 600; transition: all 0.25s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    .footer { padding: 40px 24px; text-align: center; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-light); }
+    .footer a { color: var(--primary); }
+
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-detail-inner, .service-detail-inner.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .page-hero h1 { font-size: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .page-hero { padding: 110px 20px 48px; }
+      .section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Dr Sveta Marković<small>Stomatološka ordinacija</small></a>
+    <nav class="nav">
+      <a href="index.html">Početna</a>
+      <a href="usluge.html" class="active">Usluge</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+381643262252" class="nav-cta">Pozovite nas</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Početna</a>
+    <a href="usluge.html">Usluge</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+381643262252" class="nav-cta">Pozovite nas</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Usluge koje naši pacijenti najviše traže</h1>
+  <p>Kompletan spektar stomatoloških usluga. Od redovnih pregleda do složene oralne hirurgije.</p>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="section section-soft">
+  <div class="container">
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1629909615957-be67e4c0e7a3?auto=format&fit=crop&w=600&q=80" alt="Oralna hirurgija" loading="lazy">
+        <div class="service-card-body">
+          <h3>Oralna hirurgija</h3>
+          <p>Hirurško vađenje umnjaka, komplikovane ekstrakcije i operativni zahvati. Dr Marković je specijalista oralne hirurgije.</p>
+          <span class="service-tag">Specijalnost ordinacije</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=600&q=80" alt="Ugradnja implantata" loading="lazy">
+        <div class="service-card-body">
+          <h3>Zubni implanti</h3>
+          <p>Stručna i precizna ugradnja implantata. Brz oporavak, minimalan otok. Pacijenti potvrđuju da bol nakon zahvata gotovo ne postoji.</p>
+          <span class="service-tag">Trajno rešenje</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=600&q=80" alt="Estetska stomatologija" loading="lazy">
+        <div class="service-card-body">
+          <h3>Estetska stomatologija</h3>
+          <p>Izbeljivanje zuba, estetske popravke i restauracije. Osmeh koji želite, bez kompromisa u kvalitetu.</p>
+          <span class="service-tag">Osmeh po meri</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80" alt="Popravke zuba" loading="lazy">
+        <div class="service-card-body">
+          <h3>Konzervativna stomatologija</h3>
+          <p>Popravke karijesnih zuba, lečenje kanala korena, zamena starih plombi. Savremeni materijali za trajne rezultate.</p>
+          <span class="service-tag">Preventiva i lečenje</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=600&q=80" alt="Protetika" loading="lazy">
+        <div class="service-card-body">
+          <h3>Protetika</h3>
+          <p>Krunice, mostovi, proteze. Nadoknade koje izgledaju i funkcionišu kao prirodni zubi. Saradnja sa vrhunskim tehničarima.</p>
+          <span class="service-tag">Funkcionalan osmeh</span>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Hitna stomatološka pomoć" loading="lazy">
+        <div class="service-card-body">
+          <h3>Hitna stomatološka pomoć</h3>
+          <p>Bol, otok, trauma. Ne čekate. Otvoreni smo svaki dan do ponoći, uključujući vikende i praznike. Pozovite i dođite.</p>
+          <span class="service-tag">Svaki dan 7-24h</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: ORAL SURGERY -->
+<div class="service-detail">
+  <div class="service-detail-inner">
+    <div class="service-detail-text">
+      <h2>Oralna hirurgija bez straha</h2>
+      <p>Dr Mitar Marković je specijalista oralne hirurgije koji je završio specijalizaciju na Stomatološkom fakultetu u Beogradu. Hirurško vađenje umnjaka je jedna od najčešćih intervencija u ordinaciji.</p>
+      <div class="detail-list">
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Hirurško vađenje umnjaka (i komplikovanih slučajeva)</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Bezbolna procedura sa savremenom anestezijom</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Minimalan oporavak, pacijenti često ne koriste analgetike</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Kontrolni poziv od doktora nakon intervencije</p>
+        </div>
+      </div>
+      <a href="tel:+381643262252" class="btn-primary">Zakažite konsultaciju</a>
+    </div>
+    <div class="service-detail-img">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=700&q=80" alt="Oralna hirurgija u ordinaciji Dr Sveta Marković" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL: IMPLANTS -->
+<div class="service-detail" style="background: var(--bg-soft);">
+  <div class="service-detail-inner reverse">
+    <div class="service-detail-text">
+      <h2>Implanti koji menjaju sve</h2>
+      <p>Izgubljen zub ne mora da ostane prazan prostor. Ugradnja implantata je trajno rešenje koje vraća i funkciju i izgled. Naši pacijenti redovno potvrđuju da je proces bio mnogo lakši nego što su očekivali.</p>
+      <div class="detail-list">
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Stručna dijagnostika i planiranje</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Precizna ugradnja sa minimalnim otokom</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Kvalitetni materijali i saradnja sa vodećim tehničarima</p>
+        </div>
+        <div class="detail-item">
+          <div class="detail-check">&#10003;</div>
+          <p>Redovne kontrole tokom celog procesa</p>
+        </div>
+      </div>
+      <a href="tel:+381643262252" class="btn-primary">Saznajte više</a>
+    </div>
+    <div class="service-detail-img">
+      <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=700&q=80" alt="Ugradnja zubnih implantata" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ne znate koja usluga Vam treba?</h2>
+    <p>Pozovite nas, doktor će Vam objasniti sve mogućnosti na pregledu. Bez obaveze.</p>
+    <a href="tel:+381643262252" class="btn-white">Pozovite 064/326-2252</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Dežurna stomatološka ordinacija Dr Sveta Marković. Sva prava zadržana.</p>
+    <p style="margin-top:8px;"><small>Sajt napravio <a href="https://nikolajanjic.com" target="_blank">Nikola Janjić</a></small></p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+</script>
+</body>
+</html>
